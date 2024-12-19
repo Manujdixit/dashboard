@@ -19,9 +19,9 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
         ref={ref} // Attach the ref here
         className={`fixed md:relative transition-all duration-500 ease-in-out
           ${isCollapsed ? "w-16" : "w-[248px]"}
-          min-h-screen bg-white text-white shadow-lg`}
+         h-screen bg-white text-white shadow-lg overflow-hidden`}
       >
-        <nav className="flex flex-col gap-20 h-full px-4 py-3 overflow-hidden">
+        <nav className="flex flex-col gap-20 h-full px-4 py-3 ">
           <div>
             {!isCollapsed ? (
               <svg

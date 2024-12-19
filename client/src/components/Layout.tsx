@@ -23,11 +23,13 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex min-h-screen">
       <Sidebar ref={sidebarRef} isCollapsed={isCollapsed} />
       <div className="flex-1 ml-16 md:ml-0">
         <Navbar onToggleSidebar={() => setIsCollapsed(!isCollapsed)} />
-        <div className="p-4">{children}</div>
+        <div className="p-16 overflow-y-auto min-h-screen">
+          <div className="p-4">{children}</div>
+        </div>
       </div>
     </div>
   );
