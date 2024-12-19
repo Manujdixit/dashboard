@@ -1,6 +1,6 @@
 // filepath: client/src/App.tsx
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Layout } from "./components/Layout";
+import Layout from "./components/Layout";
 import StudentPage from "./pages/StudentPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
