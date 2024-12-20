@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <SidebarTrigger onClick={handleClick} size="lg" />
             <Header collapsed={isCollapsed} />
           </div>
-          <div className="p-4 rounded-xl">{children}</div>
+          <div className="px-4 pb-4 rounded-xl">{children}</div>
         </div>
       </SidebarProvider>
     </div>
