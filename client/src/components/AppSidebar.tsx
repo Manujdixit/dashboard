@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Book, HelpCircle, Home, Settings, Users } from "lucide-react";
 import quyl from "../assets/quyl.svg";
 import {
   Sidebar,
@@ -21,23 +21,23 @@ const items = [
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "/inbox",
-    icon: Inbox,
+    title: "Students",
+    url: "/students",
+    icon: Users,
   },
   {
-    title: "Calendar",
-    url: "/calendar",
-    icon: Calendar,
+    title: "Chapter",
+    url: "/chapter",
+    icon: Book,
   },
   {
-    title: "Search",
-    url: "/search",
-    icon: Search,
+    title: "Help",
+    url: "/help",
+    icon: HelpCircle,
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/settings",
     icon: Settings,
   },
 ];
@@ -51,7 +51,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <div className="py-7 px-3">
+      <div className="py-7 px-3 h-full bg-white">
         <SidebarHeader>
           <img className="w-24 mb-7" src={quyl} alt="logo" />
         </SidebarHeader>
@@ -61,10 +61,15 @@ export function AppSidebar() {
               <SidebarMenu className="flex flex-col gap-2">
                 {items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
+                    <SidebarMenuButton size="lg">
                       <NavLink
                         to={item.url}
                         onClick={() => handleClick(item.url)}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "bg-[#EEEEEE] rounded-lg p-2 block w-full"
+                            : "text-gray-600 p-2 block w-full"
+                        }
                       >
                         <div className="flex gap-3 ">
                           <item.icon className="h-6 w-6" />
