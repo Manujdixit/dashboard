@@ -15,13 +15,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <SidebarProvider>
         <AppSidebar />
         <div className="flex flex-col w-full h-full">
-          {/* Header */}
           <div className="w-full flex items-center justify-between sticky top-0 bg-[#F6F8FA] z-40 p-3">
             <SidebarTrigger onClick={handleClick} size="lg" />
             <Header collapsed={isCollapsed} />
           </div>
-
-          {/* Main content */}
           <div className="p-4 rounded-xl">{children}</div>
         </div>
       </SidebarProvider>

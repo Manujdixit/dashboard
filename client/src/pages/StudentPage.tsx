@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, Plus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -17,12 +17,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useAppSelector } from "@/store/hooks/hooks";
+import { Dialogg } from "@/components/Dialog";
 
 const StudentPage = () => {
+  const { students } = useAppSelector((state) => state.students);
+
   return (
     <div className="bg-white min-h-screen w-full flex flex-col gap-2">
-      <div className="flex justify-between">
-        <div className="flex  gap-4 p-4">
+      <div className="flex justify-between p-4">
+        <div className="flex space-x-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant={"secondary"}>
@@ -54,12 +58,7 @@ const StudentPage = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <div className="p-4">
-          <Button variant={"secondary"}>
-            <Plus />
-            <div>Add New Student</div>
-          </Button>
-        </div>
+        <Dialogg />
       </div>
       <div className="px-4">
         <Table>
@@ -75,12 +74,22 @@ const StudentPage = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className="font-medium">INV001</TableCell>
-              <TableCell>Paid</TableCell>
-              <TableCell>Credit Card</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
-            </TableRow>
+            {students.map((student) => (
+              <TableRow key={student.id}>
+                <TableCell className="font-medium">{student.name}</TableCell>
+                <TableCell>{student.cohort}</TableCell>
+                <TableCell>{student.courses.join(", ")}</TableCell>
+                <TableCell>{student.dateJoined}</TableCell>
+                <TableCell>{student.lastLogin}</TableCell>
+                <TableCell>
+                  {student.status === "active" ? (
+                    <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+                  ) : (
+                    <div className="h-3 w-3 bg-rose-500 rounded-full"></div>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>
