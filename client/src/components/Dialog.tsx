@@ -6,7 +6,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
-import { Plus } from "lucide-react";
 import { useState } from "react";
 import { useAddStudent } from "../hooks/addStudent";
 
