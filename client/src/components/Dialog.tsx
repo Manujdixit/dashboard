@@ -24,7 +24,6 @@ export const Dialogg = () => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button variant={"secondary"}>
-            <Plus />
             <div>Add New Student</div>
           </Button>
         </DialogTrigger>
