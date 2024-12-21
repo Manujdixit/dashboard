@@ -46,6 +46,9 @@ app.get("/api/students", async (req, res) => {
     const students = await prisma.student.findMany({
       skip,
       take: limit,
+      orderBy: {
+        dateJoined: "desc",
+      },
     });
 
     const totalStudents = await prisma.student.count();
