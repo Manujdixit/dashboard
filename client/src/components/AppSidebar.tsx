@@ -13,7 +13,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router";
 
-// Menu items.
 const items = [
   {
     title: "Dashboard",

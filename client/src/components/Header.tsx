@@ -35,18 +35,14 @@ export default function Header({ collapsed }: { collapsed: boolean }) {
 
   return (
     <div className="flex items-center justify-between w-full px-4 py-2">
-      {/* Mobile Menu */}
       {isMobile ? (
         <Sheet>
           <SheetContent side="left" className="w-[280px] sm:w-[350px]">
-            {/* Mobile Navigation */}
             <nav className="flex flex-col gap-4">
-              {/* Profile Section */}
               <div className="flex items-center gap-3 pb-4">
                 <img className="w-20 sm:w-24" src={quyl} alt="logo" />
               </div>
 
-              {/* Navigation Items */}
               <div className="flex flex-col gap-2">
                 {navigationItems.map((item) => (
                   <NavLink
@@ -75,9 +71,7 @@ export default function Header({ collapsed }: { collapsed: boolean }) {
         />
       </div>
 
-      {/* Icons and Profile Section */}
       <div className="flex items-center space-x-2 sm:space-x-4 lg:space-x-6">
-        {/* Desktop Icons - Hidden on Mobile */}
         <div className="hidden lg:flex items-center space-x-4">
           <Button
             variant="ghost"
@@ -114,7 +108,6 @@ export default function Header({ collapsed }: { collapsed: boolean }) {
           </Button>
         </div>
 
-        {/* Profile - Responsive Design */}
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="relative">
             <img

@@ -7,43 +7,18 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
 import { Plus } from "lucide-react";
-import { useAppDispatch } from "@/store/hooks/hooks";
 import { useState } from "react";
-import { addStudent } from "@/store/slices/studentSlice";
+import { useAddStudent } from "../hooks/addStudent";
 
 export const Dialogg = () => {
-  const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    cohort: "",
-    courses: "",
-  });
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const { formData, handleChange, handleSubmit, loading, error } =
+    useAddStudent();
 
-    const newStudent = {
-      id: crypto.randomUUID(),
-      name: formData.name,
-      cohort: formData.cohort,
-      courses: formData.courses.split(",").map((course) => course.trim()),
-      dateJoined: new Date().toISOString().split("T")[0],
-      lastLogin: new Date().toISOString().split("T")[0],
-      status: "active" as const,
-    };
-
-    dispatch(addStudent(newStudent));
-    setFormData({ name: "", cohort: "", courses: "" });
+  const handleSuccess = async () => {
     setOpen(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
   return (
     <div>
       <Dialog open={open} onOpenChange={setOpen}>
@@ -58,7 +33,10 @@ export const Dialogg = () => {
             <DialogTitle>Add New Student</DialogTitle>
           </DialogHeader>
           <div>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              onSubmit={(event) => handleSubmit(event, handleSuccess)}
+              className="space-y-4"
+            >
               <div>
                 <label className="block text-sm font-medium">
                   Student Name
@@ -97,8 +75,9 @@ export const Dialogg = () => {
                   required
                 />
               </div>
-              <Button type="submit" className="mt-4">
-                Save
+              {error && <p className="text-red-500 text-sm">{error}</p>}
+              <Button type="submit" className="mt-4" disabled={loading}>
+                {loading ? "Saving..." : "Save"}
               </Button>
             </form>
           </div>

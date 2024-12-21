@@ -1,8 +1,8 @@
 export interface Student {
-  id: string;
+  id?: string;
   name: string;
   cohort: string;
-  courses: string[];
+  courses: string;
   dateJoined: string;
   lastLogin: string;
   status: "active" | "inactive";
