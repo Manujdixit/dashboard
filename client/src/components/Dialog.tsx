@@ -23,7 +23,7 @@ export const Dialogg = () => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button variant={"secondary"}>
-            <div>Add New Student</div>
+            <div>Add Student</div>
           </Button>
         </DialogTrigger>
         <DialogContent>
